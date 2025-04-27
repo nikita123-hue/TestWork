@@ -20,6 +20,8 @@ class CommentRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     def get_queryset(self):
+        queryset = Comment.objects.all()
+        
         if self.request.method in ['PUT','PATCH','DELETE']:
-            return super().get_queryset()
+            return queryset.filter(author=self.request.user)
         return Comment.objects.all()

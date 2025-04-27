@@ -12,5 +12,5 @@ class PostSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
     
     class Meta:
-        model = Post
+        model = Post 
         fields = ('id', 'title', 'content', 'pub_date', 'author', 'tags')
