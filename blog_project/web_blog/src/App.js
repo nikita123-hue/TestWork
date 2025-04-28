@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { login, register } from "./api/auth";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 
 function App() {
+    const navigate = useNavigate()
+
     const [activeForm, setActiveForm] = useState("signin");
     const [formData, setFormData] = useState({
         email: "",
@@ -22,16 +25,18 @@ function App() {
             const data = await login(formData.username, formData.password);
             localStorage.setItem("access", data.access);
             localStorage.setItem("refresh", data.refresh);
+            localStorage.setItem("username", data.username)
+            navigate("/home")
         } catch (err) {
-          console.log(err)
+            console.log(err);
         }
     };
 
     const handleRegister = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
-          console.log("Пароли не совпадают")
-          return;
+            console.log("Пароли не совпадают");
+            return;
         }
         try {
             const data = await register(
@@ -41,8 +46,9 @@ function App() {
             );
             localStorage.setItem("access", data.access);
             localStorage.setItem("refresh", data.refresh);
+            navigate("/home")
         } catch (err) {
-          console.log(err)
+            console.log(err);
         }
     };
 
