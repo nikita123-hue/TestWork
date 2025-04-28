@@ -3,7 +3,7 @@ from rest_framework import generics, permissions
 from .models import Comment
 from .serializers import CommentSerializer
 
-class CommentListCreateView(generics.ListAPIView):
+class CommentListCreateView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
@@ -15,13 +15,17 @@ class CommentListCreateView(generics.ListAPIView):
         post_id = self.kwargs['post_id']
         serializer.save(author=self.request.user, post_id=post_id)
         
+        
+class IsCommentOwnerOrPostOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+            
+        return obj.author == request.user or obj.post.author == request.user
+    
 class CommentRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [IsCommentOwnerOrPostOwner]
     
     def get_queryset(self):
-        queryset = Comment.objects.all()
-        
-        if self.request.method in ['PUT','PATCH','DELETE']:
-            return queryset.filter(author=self.request.user)
         return Comment.objects.all()

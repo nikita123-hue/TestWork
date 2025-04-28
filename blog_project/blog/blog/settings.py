@@ -28,6 +28,29 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+# Если используете куки/сессии
+CORS_ALLOW_CREDENTIALS = True
+
+# Разрешенные методы
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+# Разрешенные заголовки
+CORS_ALLOW_HEADERS = [
+    'Content-Type',
+    'Authorization',
+]
+
 
 # Application definition
 
@@ -42,7 +65,9 @@ INSTALLED_APPS = [
     'apps.comments',
     'apps.users',
     'rest_framework',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'django_extensions',
+    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
@@ -60,6 +85,7 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

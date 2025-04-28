@@ -6,6 +6,9 @@ class CommentSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     
     class Meta: 
-        model = Comment
+        model = Comment 
         fields = ('id', 'content', 'created_at', 'author', 'post')
         read_only_fields = ('created_at', 'author')
+        extra_kwargs = {
+            'post': {'write_only': True}  
+        }
