@@ -1,0 +1,43 @@
+services:
+  # PostgreSQL для Django
+  db:
+    image: postgres:13
+    env_file: ./blog/.env 
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: blog_db
+      POSTGRES_USER: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+
+  # Django-бэкенд
+  backend:
+    build: ./blog
+    env_file: ./blog/.env
+    volumes:
+      - ./blog:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: >
+      sh -c "
+        python manage.py migrate &&
+        python manage.py migrate comments &&
+        python manage.py runserver 0.0.0.0:8000"
+
+  # React-фронтенд
+  frontend:
+    build: ./web_blog
+    volumes:
+      - ./web_blog:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    command: npm start
+
+volumes:
+  postgres_data:

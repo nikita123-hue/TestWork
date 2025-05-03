@@ -104,9 +104,10 @@ class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         )
     
     def handle_exception(self, exc):
+        response = super().handle_exception(exc)
         return StandardAPIResponse.error(
             message=str(exc),
-            status=self._get_exception_status_code(exc)
+            status=response.status_code
         )
 
 class TagListCreateView(generics.ListCreateAPIView):
@@ -130,9 +131,10 @@ class TagListCreateView(generics.ListCreateAPIView):
         )
     
     def handle_exception(self, exc):
+        response = super().handle_exception(exc)
         return StandardAPIResponse.error(
             message=str(exc),
-            status=self._get_exception_status_code(exc)
+            status=response.status_code
         )
 
 class PostTagAddRemoveView(generics.GenericAPIView):
@@ -186,7 +188,8 @@ class PostTagAddRemoveView(generics.GenericAPIView):
         )
     
     def handle_exception(self, exc):
+        response = super().handle_exception(exc)
         return StandardAPIResponse.error(
             message=str(exc),
-            status=self._get_exception_status_code(exc)
+            status=response.status_code
         )
