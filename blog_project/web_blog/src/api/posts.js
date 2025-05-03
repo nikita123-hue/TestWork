@@ -1,13 +1,14 @@
 import api from "./auth"
 
-export const getPosts = async() => {
+export const getPosts = async (queryParams = '') => {
     try {
-        const response = await api.get("/api/posts")
-        return response.data
-    } catch(error){
-        throw error
+        const response = await api.get(`/api/posts/${queryParams}`);
+        return response.data;
+    } catch (error) {
+        console.error("API Error:", error.response?.data);
+        throw error;
     }
-}
+};
 
 export const deletePost = async(postId) => {
     try {

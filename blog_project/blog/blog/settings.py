@@ -28,9 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000'] 
 
 # Если используете куки/сессии
 CORS_ALLOW_CREDENTIALS = True
@@ -75,7 +74,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.AllowAny',
     ),
 }
 

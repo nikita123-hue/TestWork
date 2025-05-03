@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import Home from "./Home";
-import PostComments from "./PostComments"
+import {Routes, Route } from "react-router-dom";
+import App from "./pages/AppPage";
+import Home from "./pages/HomePage";
+import PostComments from "./pages/PostCommentsPage"
 
 function Main() {
     return (

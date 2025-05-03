@@ -1,0 +1,63 @@
+.authForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.alert {
+    padding: 12px;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.error {
+    background: #ff4d4f;
+    color: white;
+}
+
+.authForm input {
+    width: 92%;
+    padding: 12px 16px;
+    margin-bottom: 1rem;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #f0f0f0;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+.authForm input:focus {
+    outline: none;
+    border-color: #6e48aa;
+}
+
+.authForm button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.authForm button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(110, 72, 170, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .authForm {
+        padding: 1.5rem;
+    }
+}

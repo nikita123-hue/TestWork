@@ -8,7 +8,7 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Comment 
         fields = ('id', 'content', 'created_at', 'author', 'post')
-        read_only_fields = ('created_at', 'author')
+        read_only_fields = ('created_at', 'author', 'post')
         extra_kwargs = {
-            'post': {'write_only': True}  
+            'post': {'required': False}  
         }

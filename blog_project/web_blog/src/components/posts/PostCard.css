@@ -1,0 +1,167 @@
+.card {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.card.editing {
+    background: #252525;
+    box-shadow: 0 4px 16px rgba(124, 77, 255, 0.2);
+}
+
+.post-header {
+    margin-bottom: 1rem;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    color: #a0a0a0;
+    font-size: 0.85rem;
+}
+
+.post-title {
+    color: #f0f0f0;
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.post-content {
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: #333;
+    color: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+}
+
+.tag.editable {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.tag.editable:hover {
+    background: #ff4d4f;
+}
+
+.post-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn {
+    background: #7c4dff;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #8e5dff;
+}
+
+.delete-btn {
+    background: #ff4d4f;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #ff5f61;
+}
+
+.comments-btn {
+    background: #333;
+    color: #f0f0f0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comments-btn:hover {
+    background: #444;
+}
+
+/* Edit form styles */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.edit-input {
+    padding: 0.75rem 1rem;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #f0f0f0;
+    font-size: 1rem;
+}
+
+.edit-textarea {
+    min-height: 120px;
+    padding: 0.75rem 1rem;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #f0f0f0;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.save-btn {
+    padding: 0.5rem 1.5rem;
+    background: #7c4dff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.save-btn:hover {
+    background: #8e5dff;
+}
+
+.cancel-btn {
+    padding: 0.5rem 1.5rem;
+    background: #444;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #555;
+}
